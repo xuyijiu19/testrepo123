@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Tools & Learning Portal</title>
+  <link rel="stylesheet" href="./shared/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Web Tools & Learning Portal</h1>
+    <p>A growing collection of small web tools and learning artifacts.</p>
+  </header>
+
+  <main>
+    <section id="tool-list" class="card-grid" aria-live="polite">
+      <p>Loading tools&hellip;</p>
+    </section>
+  </main>
+
+  <script type="module">
+    async function loadTools() {
+      const listEl = document.getElementById('tool-list');
+      try {
+        const response = await fetch('./tools.json');
+        if (!response.ok) {
+          throw new Error(`Failed to load tools.json (status ${response.status})`);
+        }
+        const tools = await response.json();
+        renderTools(listEl, tools);
+      } catch (err) {
+        listEl.innerHTML = `<p>Couldn't load the tool list. If you opened this file directly, serve it over http(s) instead (e.g. <code>python3 -m http.server</code>). (${err.message})</p>`;
+      }
+    }
+
+    function renderTools(listEl, tools) {
+      if (!Array.isArray(tools) || tools.length === 0) {
+        listEl.innerHTML = '<p>No tools yet &mdash; check back soon.</p>';
+        return;
+      }
+      listEl.innerHTML = '';
+      for (const tool of tools) {
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = tool.path;
+
+        const title = document.createElement('h2');
+        title.textContent = tool.title;
+
+        const desc = document.createElement('p');
+        desc.textContent = tool.description;
+
+        const type = document.createElement('span');
+        type.className = 'card-type';
+        type.textContent = tool.type;
+
+        card.append(title, desc, type);
+        listEl.append(card);
+      }
+    }
+
+    loadTools();
+  </script>
+</body>
+</html>

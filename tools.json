@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "unit-converter",
+    "title": "Unit Converter",
+    "description": "Convert between length, weight, and temperature units.",
+    "type": "tool",
+    "path": "tools/unit-converter/index.html"
+  },
+  {
+    "slug": "json-formatter",
+    "title": "JSON Formatter",
+    "description": "Pretty-print, validate, and minify JSON.",
+    "type": "tool",
+    "path": "tools/json-formatter/index.html"
+  }
+]

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON Formatter &mdash; Web Tools & Learning Portal</title>
+  <link rel="stylesheet" href="../../shared/styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="tool-page">
+    <a class="back-link" href="../../index.html">&larr; Back to all tools</a>
+    <h1>JSON Formatter</h1>
+    <p>Pretty-print, validate, and minify JSON.</p>
+
+    <div id="message" class="message hidden"></div>
+
+    <div class="field">
+      <label for="json-input">JSON</label>
+      <textarea id="json-input" spellcheck="false" placeholder='{"example": true}'></textarea>
+    </div>
+
+    <div class="button-row">
+      <button id="format-btn">Format</button>
+      <button id="minify-btn">Minify</button>
+      <button id="copy-btn" class="secondary">Copy</button>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
