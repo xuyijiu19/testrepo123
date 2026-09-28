@@ -1,19 +1,22 @@
 :root {
-  --color-bg: #f7f7f9;
-  --color-surface: #ffffff;
-  --color-text: #1c1c1e;
-  --color-text-muted: #5b5b63;
-  --color-border: #e2e2e7;
-  --color-accent: #3457d5;
-  --color-accent-hover: #2941ab;
+  --color-bg: #f7f3ea;
+  --color-surface: #fffefb;
+  --color-text: #2b2620;
+  --color-text-muted: #746b5e;
+  --color-text-faint: #9c9280;
+  --color-border: #e4dcc9;
+  --color-border-dashed: #c9bfa9;
+  --color-accent: #c1633b;
+  --color-accent-hover: #a34f2c;
   --color-error-bg: #fdecea;
   --color-error-text: #93231b;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Work Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 2rem;
-  --radius: 8px;
+  --radius: 10px;
 }
 
 * {
@@ -29,7 +32,9 @@ body {
 }
 
 h1, h2, h3 {
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
 }
 
 a {
@@ -42,11 +47,30 @@ a:hover {
 
 header.site-header {
   padding: var(--space-lg) var(--space-md);
-  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header.site-header .eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+}
+
+header.site-header h1 {
+  margin: 0 0 var(--space-sm);
+  font-size: 2.75rem;
 }
 
 header.site-header p {
+  margin: 0;
   color: var(--color-text-muted);
+  font-size: 1.1rem;
+  max-width: 640px;
 }
 
 .card-grid {
@@ -59,24 +83,26 @@ header.site-header p {
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: var(--space-md);
+  padding: 1.4rem;
   text-decoration: none;
   color: inherit;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(43, 38, 32, 0.1);
   transform: translateY(-2px);
 }
 
 .card h2 {
-  margin: 0 0 var(--space-sm);
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1.25rem;
   color: var(--color-text);
 }
 
@@ -84,21 +110,61 @@ header.site-header p {
   margin: 0;
   color: var(--color-text-muted);
   font-size: 0.95rem;
+  flex-grow: 1;
 }
 
 .card .card-type {
-  display: inline-block;
-  margin-top: var(--space-sm);
-  font-size: 0.75rem;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
   color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.card-soon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: transparent;
+  border: 1px dashed var(--color-border-dashed);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+
+.card-soon h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-text-faint);
+}
+
+.card-soon p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-faint);
+}
+
+.site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
 }
 
 .tool-page {
   max-width: 640px;
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
+}
+
+.tool-page h1 {
+  font-size: 2.25rem;
 }
 
 .tool-page .back-link {
@@ -114,7 +180,7 @@ header.site-header p {
 .field label {
   display: block;
   margin-bottom: var(--space-sm);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 
@@ -140,8 +206,9 @@ textarea {
 }
 
 button {
-  font-family: inherit;
+  font-family: var(--font-sans);
   font-size: 0.95rem;
+  font-weight: 500;
   padding: 0.6rem 1rem;
   border-radius: var(--radius);
   border: 1px solid var(--color-accent);
@@ -172,6 +239,7 @@ button.secondary:hover {
 }
 
 .result {
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 600;
   padding: var(--space-md);

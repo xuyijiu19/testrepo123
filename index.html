@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Tools & Learning Portal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap">
   <link rel="stylesheet" href="./shared/styles.css">
 </head>
 <body>
   <header class="site-header">
+    <span class="eyebrow">Portal</span>
     <h1>Web Tools & Learning Portal</h1>
     <p>A growing collection of small web tools and learning artifacts.</p>
   </header>
@@ -17,6 +19,10 @@
       <p>Loading tools&hellip;</p>
     </section>
   </main>
+
+  <footer class="site-footer">
+    Vanilla HTML &middot; CSS &middot; JS &mdash; no frameworks, no build step.
+  </footer>
 
   <script type="module">
     async function loadTools() {
@@ -57,6 +63,11 @@
         card.append(title, desc, type);
         listEl.append(card);
       }
+
+      const soon = document.createElement('div');
+      soon.className = 'card-soon';
+      soon.innerHTML = '<h2>More on the way</h2><p>New tools and lessons are added here over time.</p>';
+      listEl.append(soon);
     }
 
     loadTools();
